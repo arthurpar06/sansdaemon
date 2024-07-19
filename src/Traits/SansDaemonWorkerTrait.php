@@ -52,7 +52,7 @@ trait SansDaemonWorkerTrait
      */
     protected function shouldRunNextJob()
     {
-        if ($this->isOverMaxExecutionTime($this->gatherWorkerOptions())) {
+        if ($this->isOverMaxExecutionTime()) {
             return false;
         }
 
@@ -66,10 +66,9 @@ trait SansDaemonWorkerTrait
     /**
      * Detect if the worker is running longer than the maximum execution time.
      *
-     * @param  \Illuminate\Queue\WorkerOptions  $options
      * @return bool
      */
-    protected function isOverMaxExecutionTime($options)
+    protected function isOverMaxExecutionTime()
     {
         $max_exec_time = (int) $this->option('max_exec_time');
 
